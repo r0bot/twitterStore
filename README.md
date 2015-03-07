@@ -1,4 +1,4 @@
-Kir's Auction
+Twitter Store
 ===========
 
-Shopping cart and an auction system
+Web app that allows users to save favorite tweets.
