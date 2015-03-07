@@ -1,2 +1,4 @@
-# twitterStore
-An app that allows users to store their favorite tweets.
+Kir's Auction
+===========
+
+Shopping cart and an auction system
