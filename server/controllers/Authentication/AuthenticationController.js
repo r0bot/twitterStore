@@ -17,9 +17,17 @@ var AuthenticationController = function (passport) {
 
             passport.authenticate(strategy, function(err, user) {
                 if (err || !user) {
-
+                    res.status(403).send(error);
+                    return;
                 }
-                res.redirect('/');
+                req.logIn(user, function (error) {
+                    if (error) {
+                        res.status(403).send(error);
+                        return;
+                    }
+
+                    res.redirect('/');
+                });
             })(req, res, next);
         };
     }

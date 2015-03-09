@@ -1,0 +1,24 @@
+<div class="panel panel-default" >
+    <div class="panel-heading">
+        <input class="form-control"
+               type="text"
+               ng-model="findUsersCtrl.twitterUsersSearch"
+               ng-change="findUsersCtrl.textChange(findUsersCtrl.twitterUsersSearch)"
+               placeholder="Search Twitter Users">
+        <span class="pull-right" ng-show="findUsersCtrl.showRequestStatus">{{findUsersCtrl.requestStatus}}</span>
+    </div>
+    <div class="panel-body">
+        <ul class="media-list" >
+            <li class="media favoriteUser" ng-click="" ng-repeat="user in findUsersCtrl.twitterUsers" >
+                <div class="media-left">
+                    <img class="media-object" src="{{user.profile_image_url}}" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{user.screen_name}}</h4>
+                    {{user.description}}
+                </div>
+                <button class="btn btn-default btn-small btn-info" ng-click="findUsersCtrl.addToFavorites(user.id)">Add to Favorites</button>
+            </li>
+        </ul>
+    </div>
+</div>

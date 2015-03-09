@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">User Statuses
+        <span class="pull-right" ng-show="favUserStatusesCtrl.showRequestStatus">{{favUserStatusesCtrl.requestStatus}}</span>
+    </div>
+    <div ng-show="favUserStatusesCtrl.showMessage">{{favUserStatusesCtrl.infoMessage}}</div>
+    <div class="panel-body" ng-show="!favoriteUsersCtrl.showMessage">
+        <article class="tweetArticle" ng-repeat="tweet in favUserStatusesCtrl.favoriteUserStatuses">
+            <header>
+                <h3>{{tweet.user.name}}</h3>
+                <p>Created at: <time>{{tweet.created_at}}</time></p>
+            </header>
+            {{tweet.text}}
+            <footer class="footer tweetArticleFooter">
+                <p><small>Retweets: {{tweet.retweet_count}}</small></p>
+            </footer>
+            <button class="btn btn-primary" ng-click="favUserStatusesCtrl.retweetStatus(tweet.id_str)">Retweet</button>
+            <button ng-click="favUserStatusesCtrl.saveStatus(tweet)" class="btn btn-success">Save</button>
+        </article>
+    </div>
+</div>

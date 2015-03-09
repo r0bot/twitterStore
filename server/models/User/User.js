@@ -1,10 +1,3 @@
-/**
- * This module includes the mongoose model and schema for the User business object.
- * The current configuration is only for the local strategy. If you want to use OAuth or other
- * types of authentication - extend it.
- * 
- */
-
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
@@ -47,14 +40,20 @@ var UserSchema = new Schema({
 			type: String,
 			enum: ['user', 'admin']
 		}],
-		default: ['user']
+		default: ['user','admin']
 	},
 	twitterID: {
 		type: String,
 		required: 'Twitter ID is required'
 	},
 	providerData: {},
-	additionalProvidersData: {},
+    favoriteTwitterUsers: [{
+        type: String
+    }],
+    retweetsCount:{
+        type: Number,
+        default: 0
+    },
 	updated: {
 		type: Date
 	},

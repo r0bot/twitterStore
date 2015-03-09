@@ -50,11 +50,9 @@ function getById (id) {
 
 function createUser (params) {
     var deferred = Q.defer();
-    var user = new User({
-        // Set user model properties here...
-    });
+    var user = new User(params);
 
-    user.save(user, function (error, savedUser) {
+    user.save(function (error, savedUser) {
         if (error) {
             deferred.reject(error);
             return;

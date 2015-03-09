@@ -14,7 +14,7 @@ module.exports = function() {
             passReqToCallback: true
         },
         function(req, token, tokenSecret, profile, done) {
-            console.log('asdasds');
+
             process.nextTick(function() {
                 var providerData = profile._json;
                 providerData.token = token;

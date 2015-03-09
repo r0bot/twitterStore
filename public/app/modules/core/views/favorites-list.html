@@ -1,0 +1,19 @@
+<div class="panel panel-default" >
+    <div class="panel-heading">Favorite Twitter Users</div>
+    <div ng-show="favoriteUsersCtrl.showMessage">{{favoriteUsersCtrl.infoMessage}}</div>
+    <div class="panel-body" ng-show="!favoriteUsersCtrl.showMessage">
+        <ul class="media-list">
+            <li class="media favoriteUser" ng-repeat="user in favoriteUsersCtrl.favoriteUsers" >
+                <div ng-click="favoriteUsersCtrl.listUserStatuses(user.id)">
+                    <div class="media-left">
+                        <img class="media-object" src="{{user.profile_image_url}}" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{user.screen_name}}</h4>
+                        {{user.description}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Saved Statuses
+        <span class="pull-right" ng-show="savedStatusesCtrl.showRequestStatus">{{savedStatusesCtrl.requestStatus}}</span>
+    </div>
+    <div ng-show="savedStatusesCtrl.showMessage">{{savedStatusesCtrl.infoMessage}}</div>
+    <div class="panel-body" ng-show="!savedStatusesCtrl.showMessage">
+        <article class="tweetArticle" ng-repeat="savedStatus in savedStatusesCtrl.SavedUserStatuses">
+            <header>
+                <h3>{{savedStatus.statusData.user.screen_name}}</h3>
+                <p>Created at: <time>{{savedStatus.statusData.created_at}}</time></p>
+            </header>
+            {{savedStatus.statusData.text}}
+            <footer class="footer tweetArticleFooter">
+                <p><small>Retweets: {{savedStatus.statusData.retweet_count}}</small></p>
+            </footer>
+            <button class="btn btn-primary" ng-click="savedStatusesCtrl.retweetStatus(savedStatus.statusData.id_str)">Retweet</button>
+        </article>
+    </div>
+</div>

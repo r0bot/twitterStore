@@ -11,9 +11,9 @@ var config = _.extend(require('./environments/' + environment));
 var ASSETS = {
     lib: {
         css: [
-            'public/assets/css/bootstrap.css',
-            'public/assets/css/bootstrap-theme.css',
-            'public/assets/css/style.css'
+            'public/assets/css/bootstrap.min.css',
+            'public/assets/css/style.css',
+            'public/assets/css/material.min.css'
         ],
         js: [
             'public/assets/bower_components/angular/angular.js',
