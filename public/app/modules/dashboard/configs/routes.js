@@ -11,20 +11,27 @@ angular.module('dashboard')
                     templateUrl: 'app/modules/dashboard/views/dashboard.html',
                     controller: 'DashboardController',
                     controllerAs: 'dashboardCtrl',
+                    data: {
+                        adminRoute: true
+                    }
                 })
                 .state('dashboard.users', {
                 url: '/users',
                 templateUrl: 'app/modules/dashboard/views/users.html',
                 controller: 'DashboardUsersController',
-                controllerAs: 'dashboardUsersCtrl'
-                //resolve: RoutePermissionsProvider.isAdmin
+                controllerAs: 'dashboardUsersCtrl',
+                    data: {
+                        adminRoute: true
+                    }
                 })
                 .state('dashboard.overview', {
                     url: '/overview',
                     templateUrl: 'app/modules/dashboard/views/overview.html',
                     controller: 'DashboardOverviewController',
-                    controllerAs: 'dashboardOverviewCtrl'
-                    //resolve: RoutePermissionsProvider.isAdmin
+                    controllerAs: 'dashboardOverviewCtrl',
+                    data: {
+                        adminRoute: true
+                    }
                 })
         }
     ]);

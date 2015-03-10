@@ -25,7 +25,8 @@ angular.module('core')
                 .get('/auth/logout')
                 .then(function (response) {
                     if(response.data.success){
-                        authService.user = response.data.user;
+                        //On successful sign out remove the user and redirect to home page
+                        authService.user = {};
                         $state.go('home');
                         return response.data.user;
                     }

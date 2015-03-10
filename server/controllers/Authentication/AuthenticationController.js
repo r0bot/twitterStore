@@ -38,6 +38,15 @@ var AuthenticationController = function (passport) {
         }
     }
 
+    //Middleware function for routes, to check if user is admin
+    function isAdmin (req, res, next) {
+        if (req.user.roles.indexOf('admin')) {
+            return next();
+        } else {
+            res.sendStatus(403);
+        }
+    }
+
 
     // OAuth callback
     function oauthCallback (strategy) {
@@ -75,6 +84,7 @@ var AuthenticationController = function (passport) {
     return {
         isLoggedIn: isLoggedIn,
         isAuthenticated: isAuthenticated,
+        isAdmin: isAdmin,
         logout: logout,
         oauthCallback: oauthCallback,
         saveOAuthUserProfile: saveOAuthUserProfile

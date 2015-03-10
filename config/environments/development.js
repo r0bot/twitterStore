@@ -4,8 +4,12 @@
 
 var ip = '127.0.0.1',
     port = 3310,
+    //Specify the name of the DB at the end so it can create automatically
     connection_string = 'mongodb://127.0.0.1:27017/twitterStore',
-    dataDirRoot = rootPath;
+    dataDirRoot = rootPath,
+    //Enter your twitter app credentials here so they can be used later for calls to twitter
+    twitterSecret = 'bDyhIG19O6wt6JvjnJBEOGljQlFooh1qL3f1TxCSPnkgwjubp2',
+    twitterKey = 'X7Ztkb72RkjOGjie0uDgKJo8g';
 
 //Init storage folder if not created
 (function initStorageFolderStructure() {
@@ -37,7 +41,7 @@ module.exports = {
     },
     twitter: {
         callbackURL: 'http://' + ip + ':' + port + '/auth/twitter/callback',
-        consumerSecret: 'bDyhIG19O6wt6JvjnJBEOGljQlFooh1qL3f1TxCSPnkgwjubp2',
-        consumerKey: 'X7Ztkb72RkjOGjie0uDgKJo8g'
+        consumerSecret: twitterSecret,
+        consumerKey: twitterKey
     }
 };

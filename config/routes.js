@@ -21,12 +21,17 @@ module.exports = function (app, passport) {
     app.use('/', routes);
     app.use('/auth', auth);
 
+    //Middleware to check if user is authenticated
     app.use('/api/*', authController.isAuthenticated);
 
     //Users routes
     app.use('/api/users', users);
     //Dashboard routes
     app.use('/api/favoriteUsers', favoriteUsers);
+
+    //Middleware to check if user is admin
+    app.use('/api/dashboard/*', authController.isAdmin);
+
     //Favorite users routes
     app.use('/api/dashboard', dashboard);
     //Statuses routes

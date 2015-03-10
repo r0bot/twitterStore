@@ -6,6 +6,7 @@ angular.module('header')
             var self = this;
             self.brand = "twitterStore";
 
+            //Init the user if available
             AuthService.getUser();
 
             //watch the user in authService for changes, so it can show hide links
@@ -16,6 +17,7 @@ angular.module('header')
                 }
             );
 
+            //Call function to signout the user
             self.signOut = function () {
                 AuthService.signOut();
             }
