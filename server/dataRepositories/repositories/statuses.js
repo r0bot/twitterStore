@@ -3,6 +3,21 @@ var mongoose = require('mongoose');
 
 var Status = require('./../../models/User/Status');
 
+function getAll () {
+    var deferred = Q.defer();
+    //Get all statuses for user based on user ID
+    Status
+        .find({}, function (error, statuses) {
+            if (error) {
+                deferred.reject(error);
+            }
+
+            deferred.resolve(statuses);
+        });
+
+    return deferred.promise;
+}
+
 function getAllForUser (params) {
     var deferred = Q.defer();
     //Get all statuses for user based on user ID
@@ -53,6 +68,7 @@ function saveStatus (params) {
 module.exports = {
     name: 'statuses',
     data: {
+        getAll: getAll,
         getAllForUser: getAllForUser,
         saveStatus: saveStatus
     }

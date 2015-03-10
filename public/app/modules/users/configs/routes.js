@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('users')
-    .config(['$stateProvider', '$urlRouterProvider', 'RoutePermissionsProvider',
-        function ($stateProvider, $urlRouterProvider, RoutePermissionsProvider) {
+    .config(['$stateProvider', '$urlRouterProvider',
+        function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('/');
 
@@ -12,7 +12,7 @@ angular.module('users')
                     templateUrl: 'app/modules/users/views/profile.html',
                     controller: 'ProfileController',
                     controllerAs: 'profileCtrl',
-                    resolve: RoutePermissionsProvider.isAuthenticated
+                    //resolve: RoutePermissionsProvider.isAuthenticated
                 })
                 .state('login', {
                     url: '/login',

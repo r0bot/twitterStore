@@ -11,9 +11,5 @@ module.exports = function (data) {
         .post(FavoriteUsersController.addFavoriteUser)
         .delete(FavoriteUsersController.removeFavoriteUser);
 
-    router.route('/status')
-        .post(FavoriteUsersController.saveStatus)
-        .delete(FavoriteUsersController.deleteStatus);
-
     return router;
 };

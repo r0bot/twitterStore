@@ -4,20 +4,23 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav container">
-            <li ng-class="{active: headerCtrl.activeState == 'favorites'}">
+            <li ui-sref-active="active">
                 <a ui-sref="favorites">Favorite Users</a>
             </li>
-            <li ng-class="{active: headerCtrl.activeState == 'find-users'}">
+            <li ui-sref-active="active">
                 <a ui-sref="find-users">Find Users</a>
             </li>
-            <li ng-class="{active: headerCtrl.activeState == 'saved-statuses'}">
+            <li ui-sref-active="active">
                 <a ui-sref="saved-statuses">Saved Statuses</a>
             </li>
-            <li class="pull-right" ng-class="{active: headerCtrl.activeState == 'login'}">
+            <li class="pull-right" ui-sref-active="active" ng-show="!headerCtrl.isUserLoggedin">
                 <a ui-sref="login">Login</a>
             </li>
-            <li class="pull-right" ng-class="{active: headerCtrl.activeState == 'dashboard'}">
-                <a ui-sref="saved-statuses">Dashboard</a>
+            <li class="pull-right" ui-sref-active="active" ng-show="headerCtrl.isUserLoggedin">
+                <a ng-click="headerCtrl.signOut()">Sign out</a>
+            </li>
+            <li class="pull-right" ui-sref-active="active" ng-show="headerCtrl.isUserAdmin">
+                <a ui-sref="dashboard">Dashboard</a>
             </li>
 
         </ul>

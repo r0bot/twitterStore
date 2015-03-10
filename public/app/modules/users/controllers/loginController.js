@@ -1,14 +1,10 @@
 'use strict';
 
 angular.module('users')
-    .controller('LoginController', ['$scope', '$state', 'Authentication', 'Identity',
-        function LoginController ($scope, $state, Authentication, Identity) {
+    .controller('LoginController', ['$scope', '$state',
+        function LoginController ($scope, $state) {
             var self = this;
 
-            self.identity = Identity;
 
-            self.twitterLogin = function () {
-                Authentication.twitterLogin()
-            };
         }
     ]);

@@ -1,14 +1,21 @@
 'use strict';
 
 angular.module('core')
-    .run(['$rootScope', '$state',
-        function($rootScope, $state) {
-            $rootScope.$on('$stateChangeError', function() {
+    .run(['$rootScope', '$state','AuthService',
+        function($rootScope, $state, AuthService) {
 
-                // If this event is raised, then some of the resolve functions in the states definitions
-                // return false, i.e the user does not have permissions to access this state
+            //Use this to intercept route changes and if the route has data.authenticatedRoute, check for user.
+            $rootScope.$on('$stateChangeStart', function (event, next) {
+                if(next.data && next.data.authenticatedRoute){
+                    AuthService.isAuthenticated().then(function (user) {
+                        if(!user) {
+                            event.preventDefault();
+                            $state.go('login');
+                        }
+                    });
 
-                $state.go('login');
-            })
+                }
+
+            });
         }
     ]);

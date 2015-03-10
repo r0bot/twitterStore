@@ -42,10 +42,6 @@ var FavoriteUsersController = function (dataRepositories) {
 
     }
 
-    function getTweetsByUser () {
-
-    }
-
     function addFavoriteUser (req, res) {
         var userFavorites = req.user.favoriteTwitterUsers;
         userFavorites.push(req.body.twitterUserID);
@@ -62,39 +58,10 @@ var FavoriteUsersController = function (dataRepositories) {
         //TODO make functionality for removing favorite user
     }
 
-    function saveStatus (req, res) {
-        var statusObject = {
-            userID: req.user._id,
-            statusID: req.body.statusData.id_str,
-            statusData: req.body.statusData
-        };
-
-        dataRepositories.statuses.saveStatus(statusObject).then(function (status) {
-                res.json({
-                    success: true,
-                    message: 'Status saved!'
-                });
-            }, function (error) {
-                res.json({
-                    success: false,
-                    message: 'Error while saving status!',
-                    error: error
-                });
-            });
-
-    }
-
-    function deleteStatus (req, res) {
-        //TODO make functionality for removing saved status
-    }
-
     return {
         getAll: getAll,
-        getTweetsByUser: getTweetsByUser,
         addFavoriteUser: addFavoriteUser,
-        removeFavoriteUser: removeFavoriteUser,
-        saveStatus: saveStatus,
-        deleteStatus: deleteStatus
+        removeFavoriteUser: removeFavoriteUser
     }
 };
 

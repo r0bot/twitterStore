@@ -7,8 +7,37 @@ var AuthenticationController = function (passport) {
 
     function logout (req, res) {
         req.logout();
-        res.redirect('/');
+        res.json({
+            success: true,
+            user: ''
+        });
     }
+
+    //Return user to front end
+    function isLoggedIn (req, res, next) {
+        if (req.user) {
+            res.json({
+                success: true,
+                user: req.user
+            });
+        } else {
+            res.json({
+                success: false,
+                user: ''
+            });
+        }
+
+    }
+
+    //Middleware function for routes, to check if user is logged in
+    function isAuthenticated (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        } else {
+            res.sendStatus(403);
+        }
+    }
+
 
     // OAuth callback
     function oauthCallback (strategy) {
@@ -17,7 +46,7 @@ var AuthenticationController = function (passport) {
 
             passport.authenticate(strategy, function(err, user) {
                 if (err || !user) {
-                    res.status(403).send(error);
+                    res.status(403).send(err);
                     return;
                 }
                 req.logIn(user, function (error) {
@@ -43,24 +72,9 @@ var AuthenticationController = function (passport) {
         return deferred.promise;
     }
 
-    function getPublicUser (user) {
-        return {
-            id: user._id,
-            username: user.username,
-            email: user.email,
-            displayName: user.displayName,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            roles: user.roles,
-            country: user.country,
-            city: user.city,
-            postalCode: user.postalCode,
-            address: user.address,
-            phoneNumber: user.phoneNumber
-        };
-    }
-
     return {
+        isLoggedIn: isLoggedIn,
+        isAuthenticated: isAuthenticated,
         logout: logout,
         oauthCallback: oauthCallback,
         saveOAuthUserProfile: saveOAuthUserProfile
