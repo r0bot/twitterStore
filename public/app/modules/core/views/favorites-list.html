@@ -13,6 +13,7 @@
                         {{user.description}}
                     </div>
                 </div>
+                <button class="btn btn-danger pull-right" ng-click="favoriteUsersCtrl.removeFromFavorites(user.id_str)">Remove</button>
             </li>
         </ul>
     </div>

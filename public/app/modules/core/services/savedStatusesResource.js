@@ -24,7 +24,6 @@ angular.module('core')
 
             function saveStatus (status) {
                 var deferred = $q.defer();
-                debugger
                 var req = {
                     method: 'POST',
                     url: 'api/statuses/status',

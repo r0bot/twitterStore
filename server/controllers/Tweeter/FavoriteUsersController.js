@@ -54,8 +54,26 @@ var FavoriteUsersController = function (dataRepositories) {
         });
     }
 
-    function removeFavoriteUser () {
-        //TODO make functionality for removing favorite user
+    function removeFavoriteUser (req, res) {
+        var userFavorites = req.user.favoriteTwitterUsers;
+
+        var indexOfUser = userFavorites.indexOf(req.body.userID);
+        if(indexOfUser > -1){
+            userFavorites.splice(indexOfUser,1);
+        }else{
+            res.json({
+                success: false,
+                message: 'User not in favorites!'
+            });
+        }
+
+
+        dataRepositories.users.updateById(req.user._id,{favoriteTwitterUsers:userFavorites}).then(function (user) {
+            res.json({
+                success: true,
+                message: 'User removed from favorites!'
+            });
+        });
     }
 
     return {

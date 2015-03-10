@@ -55,7 +55,7 @@ angular.module('core')
 
             function saveStatus (status) {
                 var deferred = $q.defer();
-                debugger
+
                 var req = {
                     method: 'POST',
                     url: 'api/statuses/status',
@@ -72,10 +72,40 @@ angular.module('core')
 
                 return deferred.promise;
             }
+            function removeFromFavorites (userID){
+                var deferred = $q.defer();
+                var req = {
+                    method: 'DELETE',
+                    url: 'api/favoriteUsers/user',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    transformRequest: function(obj) {
+                        var str = [];
+
+                        for(var p in obj) {
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        }
+                        return str.join("&");
+                    },
+                    data: {userID: userID}
+                };
+
+                $http(req)
+                    .success(function(data, status, headers, config) {
+                        deferred.resolve(data);
+                    }).
+                    error(function(data, status, headers, config) {
+                        deferred.resolve(data);
+                    });
+
+                return deferred.promise;
+            }
 
             return {
                 getAllFavorites : getAllFavorites,
                 addFavoriteUser: addFavoriteUser,
+                removeFromFavorites: removeFromFavorites,
                 saveStatus: saveStatus
             };
         }
