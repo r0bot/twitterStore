@@ -10,7 +10,7 @@ Web app that allows users to save favorite tweets. Live [Demo](http://twittersto
 based on your environment. Testing is mandatory for running test, as grunt test will use those configs.
 
 3. Run command "npm install" in that folder using git bash or cmd.
-    (Must have node and npm installed on the machine as globals, npm install will run grunt install automatically after it,
+    (Must have node and npm installed on the machine as globals, npm install will run bower install automatically after it,
      if it fails please run it manually)
 
 4. Run some simple test by invoking grunt test command. (It requires grunt-cli to be installed as a global dependency)
