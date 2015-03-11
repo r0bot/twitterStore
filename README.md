@@ -24,6 +24,7 @@ based on your environment. Testing is mandatory for running test, as grunt test 
 
 ==========
 By default all users are created as admins for testing purposes, as admins can only see statistics for now.
+
 =========
 ##### Planned improvements:
 - Testing of the twitter API.
