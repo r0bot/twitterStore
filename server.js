@@ -1,14 +1,19 @@
 var express = require('express');
-var passport = require('passport');
 var config = require('./config/config');
 
-var app = express();
-
-require('./config/passport')(passport);
+//Init mongooose
 require('./config/mongoose');
-require('./config/express')(app, passport);
-require('./config/routes')(app, passport);
 
+//Config passport and add strategies to it
+require('./config/passport')();
+
+//Config express
+var app = require('./config/express')();
+
+//Add the routes to the app
+require('./config/routes')(app);
+
+//Init the server
 app.listen(config.port, config.ip, function () {
     console.log('====================== Configuration =========================');
     console.log('Environment: ', config.environment);

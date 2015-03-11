@@ -5,19 +5,19 @@
 var serverIP = '127.0.0.1',
     serverPort = 3310,
 
-    //DB configuration
+//DB configuration
     mngoDBUser = '',
     mongoDBUSerPass = '',
     mongoDBHost = '127.0.0.1',
     mongoDBPort = '27017',
     //Specify DB name mongoose will create automatically if not available
-    mongoDBDatabaseName = 'twitterStore',
+    mongoDBDatabaseName = 'twitterStore_test',
     dbConnectionString = 'mongodb://'+mongoDBHost+':'+mongoDBPort+'/'+mongoDBDatabaseName,
 
-    //Root dir of the app
+//Root dir of the app
     dataDirRoot = rootPath,
 
-    //Enter your twitter app credentials here so they can be used later for calls to twitter
+//Enter your twitter app credentials here so they can be used later for calls to twitter
     twitterSecret = 'bDyhIG19O6wt6JvjnJBEOGljQlFooh1qL3f1TxCSPnkgwjubp2',
     twitterKey = 'X7Ztkb72RkjOGjie0uDgKJo8g';
 

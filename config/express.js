@@ -8,8 +8,11 @@ var session = require('express-session');
 var swig = require('swig');
 var morgan = require('morgan');
 var config = require('./config');
+var passport = require('passport');
 
-module.exports = function (app, passport) {
+module.exports = function () {
+    //Init app variable
+    var app = express();
     app.locals.cssFiles = config.getCSSAssets();
     app.locals.jsFiles = config.getJavaScriptAssets();
 
@@ -78,4 +81,6 @@ module.exports = function (app, passport) {
             next();
         }
     });
+
+    return app;
 };

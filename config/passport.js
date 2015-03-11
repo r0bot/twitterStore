@@ -2,9 +2,10 @@
 
 var config = require('./config'),
     path = require('path'),
+    passport = require('passport'),
     User = require('./../server/models/User/User');
 
-module.exports = function (passport) {
+module.exports = function () {
 	passport.serializeUser(function (user, done) {
 		done(null, user.id);
 	});

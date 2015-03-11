@@ -11,7 +11,6 @@ module.exports = function (data) {
     router.route('/:id')
         .get(UsersController.getById)
         .put(UsersController.updateById)
-        .delete(UsersController.remove);
 
     return router;
 };

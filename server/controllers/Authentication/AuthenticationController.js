@@ -50,9 +50,7 @@ var AuthenticationController = function (passport) {
 
     // OAuth callback
     function oauthCallback (strategy) {
-
         return function(req, res, next) {
-
             passport.authenticate(strategy, function(err, user) {
                 if (err || !user) {
                     res.status(403).send(err);
@@ -63,7 +61,6 @@ var AuthenticationController = function (passport) {
                         res.status(403).send(error);
                         return;
                     }
-
                     res.redirect('/');
                 });
             })(req, res, next);

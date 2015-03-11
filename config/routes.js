@@ -1,5 +1,7 @@
+var passport = require('passport');
 
-module.exports = function (app, passport) {
+
+module.exports = function (app) {
 
     //Get data repositories, so they can be passed to route definitions, so they can them or pass them to controllers.
     var dataRepositories = require('./../server/dataRepositories');
