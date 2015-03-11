@@ -1,7 +1,7 @@
 ## Twitter Store
 ===========
 
-Web app that allows users to save favorite tweets.
+Web app that allows users to save favorite tweets. Live [Demo](http://twitterstore-twistedsynapse.rhcloud.com/)
 
 ##### How To Install :
 1. Clone this repository in a folder.
