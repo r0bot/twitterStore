@@ -1,7 +1,7 @@
 var Q = require('q');
 var mongoose = require('mongoose');
 
-var Status = require('./../../models/User/Status');
+var Status = require('./../../models/Status/Status');
 
 function getAll () {
     var deferred = Q.defer();
